@@ -29,7 +29,13 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:paddingBottom="60dp"
-        android:paddingTop="16dp">
+        android:paddingTop="32dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume&#10; Down"
+            android:id="@+id/volume_down"/>
 
 
         <Button
@@ -44,6 +50,12 @@
             android:layout_height="wrap_content"
             android:text="Pause"
             android:id="@+id/pause_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume&#10; Up"
+            android:id="@+id/volume_up"/>
 
 
 

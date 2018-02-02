@@ -1,5 +1,7 @@
 package com.example.samue.mediaplayer;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -13,17 +15,42 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private Button playButton;
     private Button pauseButton;
+    private Button volumeUpButton;
+    private Button volumeDownButton;
     private SeekBar seekbar;
     private int startTime;
     private Handler myHandler = new Handler();
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //AudioManager
+         audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         //media player creation
          mediaPlayer = MediaPlayer.create(this,R.raw.song1);
+
+         //Volume buttons
+
+            volumeUpButton = (Button) findViewById(R.id.volume_up);
+            volumeDownButton = (Button) findViewById(R.id.volume_down);
+
+            volumeUpButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    audioManager.adjustVolume(audioManager.ADJUST_RAISE,0);
+                }
+            });
+
+            volumeDownButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    audioManager.adjustVolume(audioManager.ADJUST_LOWER,0);
+                }
+            });
+
 
         //play button assignment with OnClickListener.
         playButton = (Button) findViewById(R.id.play_button);
